@@ -1,1 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juliet Mlambo — Aspiring SQL Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fdf8f2; --bg2: #f5ede0; --bg3: #ede0ce;
+      --border: rgba(180, 120, 70, 0.18);
+      --accent: #c0622a; --accent2: #e8a055;
+      --text: #2e1f0e; --muted: #7a5c3e;
+      --serif: 'Lora', Georgia, serif; --sans: 'Nunito', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.75; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(253,248,242,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--accent); }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    #hero { min-height: 100vh; display: flex; align-items: center; padding: 6rem 2rem 4rem; max-width: 960px; margin: 0 auto; }
+    .hero-content { width: 100%; }
+    .hero-pre { font-size: 0.9rem; font-weight: 600; color: var(--accent2); letter-spacing: 0.08em; margin-bottom: 1rem; opacity: 0; animation: fadeUp 0.6s 0.2s forwards; }
+    .hero-name { font-family: var(--serif); font-size: clamp(3rem, 9vw, 6rem); font-weight: 600; line-height: 1.05; margin-bottom: 1rem; color: var(--text); opacity: 0; animation: fadeUp 0.7s 0.35s forwards; }
+    .hero-name span { color: var(--accent); }
+    .hero-role { font-family: var(--serif); font-style: italic; font-size: 1.25rem; color: var(--accent2); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.7s 0.45s forwards; }
+    .hero-tagline { font-size: 1.05rem; color: var(--muted); max-width: 580px; margin-bottom: 1rem; opacity: 0; animation: fadeUp 0.7s 0.5s forwards; }
+    .hero-location { font-size: 0.88rem; color: var(--muted); margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.7s 0.55s forwards; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s 0.65s forwards; }
+    .btn { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; text-decoration: none; padding: 0.85rem 1.8rem; border-radius: 50px; transition: all 0.25s; display: inline-block; }
+    .btn-primary { background: var(--accent); color: #fdf8f2; }
+    .btn-primary:hover { background: #a3501f; transform: translateY(-2px); }
+    .btn-outline { border: 1.5px solid var(--border); color: var(--muted); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    section { max-width: 960px; margin: 0 auto; padding: 6rem 2rem; }
+    .section-label { font-size: 0.75rem; font-weight: 600; color: var(--accent2); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .section-title { font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600; margin-bottom: 3rem; color: var(--text); }
+    .about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 4rem; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 1.02rem; }
+    .about-sidebar { display: flex; flex-direction: column; gap: 1rem; }
+    .info-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 1.25rem 1.5rem; }
+    .info-card-label { font-size: 0.72rem; font-weight: 600; color: var(--accent2); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .info-card-value { font-size: 0.92rem; color: var(--text); font-weight: 500; }
+    .info-card-value a { color: var(--accent); text-decoration: none; }
+    .info-card-value a:hover { text-decoration: underline; }
+    #skills { background: var(--bg2); max-width: 100%; }
+    #skills > .inner { max-width: 960px; margin: 0 auto; padding: 6rem 2rem; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; }
+    .skill-group { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; }
+    .skill-group-title { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--accent); margin-bottom: 1rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag { font-size: 0.78rem; font-weight: 500; background: var(--bg2); border: 1px solid var(--border); color: var(--muted); padding: 0.3rem 0.8rem; border-radius: 50px; }
+    .projects-grid { display: grid; gap: 1.5rem; }
+    .project-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 2rem 2.25rem; transition: box-shadow 0.25s, transform 0.25s; }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(180,100,40,0.1); }
+    .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+    .project-name { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--text); }
+    .project-icon { font-size: 1.6rem; opacity: 0.6; }
+    .project-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .project-tag { font-size: 0.75rem; font-weight: 600; color: var(--accent); background: rgba(192,98,42,0.1); padding: 0.2rem 0.7rem; border-radius: 50px; }
+    .project-desc { color: var(--muted); font-size: 0.97rem; margin-bottom: 1.25rem; line-height: 1.75; }
+    .project-outcome { font-size: 0.85rem; font-weight: 500; color: var(--accent); padding: 0.65rem 1rem; background: rgba(192,98,42,0.07); border-left: 3px solid var(--accent2); border-radius: 0 8px 8px 0; }
+    .timeline { display: flex; flex-direction: column; gap: 2rem; }
+    .timeline-item { display: grid; grid-template-columns: 110px 1fr; gap: 1.5rem; align-items: start; }
+    .timeline-date { font-size: 0.8rem; font-weight: 600; color: var(--accent2); padding-top: 0.35rem; text-align: right; }
+    .timeline-body { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem 1.75rem; }
+    .timeline-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
+    .timeline-sub { font-size: 0.88rem; color: var(--accent); font-weight: 600; margin-bottom: 0.75rem; }
+    .timeline-desc { font-size: 0.92rem; color: var(--muted); line-height: 1.7; }
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    .cert-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 1.4rem; display: flex; align-items: center; gap: 1rem; }
+    .cert-icon { font-size: 2rem; flex-shrink: 0; }
+    .cert-name { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
+    .cert-issuer { font-size: 0.8rem; color: var(--muted); }
+    #contact { background: var(--bg2); max-width: 100%; }
+    #contact > .inner { max-width: 960px; margin: 0 auto; padding: 6rem 2rem; }
+    .contact-box { background: var(--bg); border: 1px solid var(--border); border-radius: 24px; padding: 3.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .contact-box p { color: var(--muted); max-width: 480px; margin-bottom: 2rem; font-size: 1.05rem; }
+    .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-size: 0.82rem; color: var(--muted); }
+    footer span { color: var(--accent); font-style: italic; font-family: var(--serif); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .timeline-item { grid-template-columns: 1fr; gap: 0.4rem; }
+      .timeline-date { text-align: left; }
+      nav { padding: 1rem; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
 
+  <nav>
+    <div class="nav-logo">Juliet Mlambo</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-pre">Hi there, I'm</p>
+      <h1 class="hero-name">Juliet <span>Mlambo</span></h1>
+      <p class="hero-role">Aspiring SQL Developer & IT Systems Specialist</p>
+      <p class="hero-tagline">I work with data and code to uncover insights and build practical solutions — bridging the gap between data management and operational support.</p>
+      <p class="hero-location">📍 Benoni, Gauteng, South Africa</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View my work</a>
+        <a href="#contact" class="btn btn-outline">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <p class="section-label reveal">01 / about</p>
+    <h2 class="section-title reveal">Who I am</h2>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>I'm a recent Bachelor's graduate in Computer and Information Sciences, specializing in Application Development and IT Support. I'm passionate about building efficient database systems and delivering technical solutions that enhance performance and user experience.</p>
+        <p>My SQL and database expertise spans SQL Server, Azure SQL, and PostgreSQL. I've designed and optimized databases for real-world applications, written complex queries, and developed reports using SSRS, Power BI, and Tableau.</p>
+        <p>On the IT support side, I bring hands-on experience in hardware and software troubleshooting, network configuration, system imaging, and user assistance — making me comfortable at every layer of the stack.</p>
+        <p>I'm actively seeking opportunities as a Junior SQL Developer or IT Support Specialist, and I'm committed to continuous learning through certifications and practical projects.</p>
+      </div>
+      <div class="about-sidebar">
+        <div class="info-card">
+          <p class="info-card-label">📞 Phone</p>
+          <p class="info-card-value">060 391 4394</p>
+        </div>
+        <div class="info-card">
+          <p class="info-card-label">✉️ Email</p>
+          <p class="info-card-value"><a href="mailto:juliet.mlambo@outlook.com">juliet.mlambo@outlook.com</a></p>
+        </div>
+        <div class="info-card">
+          <p class="info-card-label">💼 LinkedIn</p>
+          <p class="info-card-value"><a href="https://www.linkedin.com/in/juliet-nomvula-mlambo" target="_blank">juliet-nomvula-mlambo</a></p>
+        </div>
+        <div class="info-card">
+          <p class="info-card-label">🐙 GitHub</p>
+          <p class="info-card-value"><a href="https://github.com/JulietM00" target="_blank">JulietM00</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="skills">
+    <div class="inner">
+      <p class="section-label reveal">02 / skills</p>
+      <h2 class="section-title reveal">What I work with</h2>
+      <div class="skills-grid reveal">
+        <div class="skill-group">
+          <p class="skill-group-title">Databases</p>
+          <div class="skill-tags">
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">T-SQL</span>
+            <span class="skill-tag">SQL Server</span>
+            <span class="skill-tag">Azure SQL</span>
+            <span class="skill-tag">PostgreSQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">Data & Reporting</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">SSRS</span>
+            <span class="skill-tag">Excel</span>
+            <span class="skill-tag">Data Modeling</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">Development</p>
+          <div class="skill-tags">
+            <span class="skill-tag">C#</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">API Integration</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">IT Support</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Hardware Troubleshooting</span>
+            <span class="skill-tag">Network Config</span>
+            <span class="skill-tag">System Imaging</span>
+            <span class="skill-tag">User Support</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-title">Soft Skills</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Attention to Detail</span>
+            <span class="skill-tag">Adaptability</span>
+            <span class="skill-tag">Problem-Solving</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="projects">
+    <p class="section-label reveal">03 / projects</p>
+    <h2 class="section-title reveal">Things I've built</h2>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-name">Sales SQL Analysis</span>
+          <span class="project-icon">📊</span>
+        </div>
+        <div class="project-meta">
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">CTEs</span>
+          <span class="project-tag">Data Analysis</span>
+        </div>
+        <p class="project-desc">Analyzed retail sales data using advanced SQL — joins, CTEs, and aggregations — to surface patterns and trends across product lines and time periods.</p>
+        <div class="project-outcome">→ Delivered actionable business recommendations from raw transactional data.</div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-name">Retail Database Design</span>
+          <span class="project-icon">🗄️</span>
+        </div>
+        <div class="project-meta">
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">Schema Design</span>
+          <span class="project-tag">Normalization</span>
+        </div>
+        <p class="project-desc">Designed a complete retail system database from the ground up — entity relationships, schema normalization, and data integrity constraints supporting real-world retail workflows.</p>
+        <div class="project-outcome">→ Produced a scalable, normalized data model ready for production use.</div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-name">Analyze International Debt Statistics</span>
+          <span class="project-icon">🌍</span>
+        </div>
+        <div class="project-meta">
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">Data Analysis</span>
+          <span class="project-tag">DataCamp</span>
+        </div>
+        <p class="project-desc">Explored international debt data from The World Bank to find patterns in how countries borrow and which debt indicators are most common globally.</p>
+        <div class="project-outcome">→ Surfaced insights on global debt distribution across countries and indicators.</div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-name">Analyzing Students' Mental Health</span>
+          <span class="project-icon">🧠</span>
+        </div>
+        <div class="project-meta">
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">Data Analysis</span>
+          <span class="project-tag">DataCamp</span>
+        </div>
+        <p class="project-desc">Used SQL to analyze a dataset on international students' mental health, investigating the impact of factors like length of stay on depression and social connectedness scores.</p>
+        <div class="project-outcome">→ Identified key factors influencing student mental health outcomes using data.</div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-name">Analyzing Industry Carbon Emissions</span>
+          <span class="project-icon">🌱</span>
+        </div>
+        <div class="project-meta">
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">Environmental Data</span>
+          <span class="project-tag">DataCamp</span>
+        </div>
+        <p class="project-desc">Queried and analyzed product carbon footprint data across industries to identify which sectors contribute most to global carbon emissions.</p>
+        <div class="project-outcome">→ Highlighted top-emitting industries and product groups driving carbon output.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <p class="section-label reveal">04 / education</p>
+    <h2 class="section-title reveal">My background</h2>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-date">2020 – 2023</div>
+        <div class="timeline-body">
+          <p class="timeline-title">IIE Bachelor of Computer and Information Sciences</p>
+          <p class="timeline-sub">Varsity College — Application Development</p>
+          <p class="timeline-desc">Specialized in application development and computer programming, with a focus on database systems, software engineering, and IT solutions.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2019</div>
+        <div class="timeline-body">
+          <p class="timeline-title">Higher Certificate in Information Technology</p>
+          <p class="timeline-sub">Varsity College — IT Administration & Management</p>
+          <p class="timeline-desc">Foundational training in IT systems administration, computer management, and technical support operations.</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 3.5rem;">
+      <p class="section-label reveal">certifications</p>
+      <h3 class="section-title reveal" style="font-size: 1.6rem; margin-bottom: 2rem;">Continuous learning</h3>
+      <div class="certs-grid reveal">
+        <div class="cert-card">
+          <div class="cert-icon">🔐</div>
+          <div>
+            <p class="cert-name">Introduction to Cybersecurity</p>
+            <p class="cert-issuer">Cisco Networking Academy</p>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">📗</div>
+          <div>
+            <p class="cert-name">Introduction to SQL</p>
+            <p class="cert-issuer">DataCamp</p>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📘</div>
+          <div>
+            <p class="cert-name">Intermediate SQL</p>
+            <p class="cert-issuer">DataCamp</p>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🗂️</div>
+          <div>
+            <p class="cert-name">Introduction to Relational Databases in SQL</p>
+            <p class="cert-issuer">DataCamp</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 3.5rem;">
+      <p class="section-label reveal">courses</p>
+      <h3 class="section-title reveal" style="font-size: 1.6rem; margin-bottom: 2rem;">What I've studied</h3>
+      <div class="skills-grid reveal">
+        <div class="skill-group">
+          <p class="skill-group-title">DataCamp</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Introduction to Python</span>
+            <span class="skill-tag">Introduction to SQL</span>
+            <span class="skill-tag">Joining Data in SQL</span>
+            <span class="skill-tag">Intermediate SQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="contact">
+    <div class="inner">
+      <p class="section-label reveal">05 / contact</p>
+      <h2 class="section-title reveal">Let's talk</h2>
+      <div class="contact-box reveal">
+        <p>I'm open to Junior Data Analyst, SQL Developer and IT Support roles, collaborations, or just a good conversation about data and tech. My inbox is always open.</p>
+        <div class="contact-links">
+          <a href="https://github.com/JulietM00" target="_blank" class="btn btn-outline">GitHub</a>
+          <a href="https://www.linkedin.com/in/juliet-nomvula-mlambo" target="_blank" class="btn btn-outline">LinkedIn</a>
+          <a href="mailto:juliet.mlambo@outlook.com" class="btn btn-primary">Email me</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Designed &amp; built by <span>Juliet Mlambo</span> &nbsp;·&nbsp; 2025</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
