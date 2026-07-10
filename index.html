@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Juliet Mlambo — Junior SQL &amp; BI Developer</title>
+  <title>Juliet Mlambo — Junior SQL Developer | Data Analyst | Data Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -61,6 +61,7 @@
     .project-icon { font-size: 1.6rem; opacity: 0.6; }
     .project-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
     .project-tag { font-size: 0.75rem; font-weight: 600; color: var(--accent); background: rgba(192,98,42,0.1); padding: 0.2rem 0.7rem; border-radius: 50px; }
+    .project-tag.status { color: var(--accent2); background: rgba(232,160,85,0.16); }
     .project-desc { color: var(--muted); font-size: 0.97rem; margin-bottom: 1.25rem; line-height: 1.75; }
     .project-outcome { font-size: 0.85rem; font-weight: 500; color: var(--accent); padding: 0.65rem 1rem; background: rgba(192,98,42,0.07); border-left: 3px solid var(--accent2); border-radius: 0 8px 8px 0; }
     .timeline { display: flex; flex-direction: column; gap: 2rem; }
@@ -100,6 +101,7 @@
     <div class="nav-logo">Juliet Mlambo</div>
     <ul class="nav-links">
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -110,8 +112,8 @@
     <div class="hero-content">
       <p class="hero-pre">Hi there, I'm</p>
       <h1 class="hero-name">Juliet <span>Mlambo</span></h1>
-      <p class="hero-role">Junior SQL &amp; BI Developer</p>
-      <p class="hero-tagline">A passionate and driven junior professional who turns raw data into real decisions. I specialise in Data Analysis, Business Intelligence, SQL Development, Software Development, and IT Support — bringing a rare blend of analytical thinking and technical execution to every project I touch. Whether it's crafting complex queries, designing clean data models, or building systems that just work, I'm here to make data useful, beautiful, and impactful. Browse my work below or grab my resume — let's build something great.</p>
+      <p class="hero-role">Junior SQL Developer | Data Analyst | Data Engineer</p>
+      <p class="hero-tagline">A passionate and driven junior professional who turns raw data into real decisions. I specialise in Data Analysis, Data Engineering, Business Intelligence, SQL Development, Solutions Development, and IT Support — bringing a rare blend of analytical thinking and technical execution to every project I touch. Whether it's crafting complex queries, building data pipelines, designing clean data models, or building systems that just work, I'm here to make data useful, beautiful, and impactful. Browse my work below or grab my resume — let's build something great.</p>
       <p class="hero-location" style="margin-top: 1rem;">📍 Benoni, Gauteng, South Africa &nbsp;·&nbsp; <a href="mailto:juliet.mlambo@outlook.com" style="color: var(--accent); text-decoration: none;">juliet.mlambo@outlook.com</a> &nbsp;·&nbsp; <a href="https://github.com/JulietM00" target="_blank" style="color: var(--accent); text-decoration: none;">GitHub</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/juliet-nomvula-mlambo" target="_blank" style="color: var(--accent); text-decoration: none;">LinkedIn</a></p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">View my work</a>
@@ -146,6 +148,16 @@
           </div>
         </div>
         <div class="skill-group">
+          <p class="skill-group-title">Data Engineering</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Apache Airflow</span>
+            <span class="skill-tag">Docker / Docker Compose</span>
+            <span class="skill-tag">Apache Superset</span>
+            <span class="skill-tag">ETL Pipelines</span>
+            <span class="skill-tag">Medallion Architecture</span>
+          </div>
+        </div>
+        <div class="skill-group">
           <p class="skill-group-title">Development</p>
           <div class="skill-tags">
             <span class="skill-tag">C#</span>
@@ -174,8 +186,23 @@
     </div>
   </div>
 
+  <section id="experience">
+    <p class="section-label reveal">02 / experience</p>
+    <h2 class="section-title reveal">Where I've worked</h2>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-date">Jan 2025 – Jun 2026</div>
+        <div class="timeline-body">
+          <p class="timeline-title">Junior SQL Developer</p>
+          <p class="timeline-sub">Monetworks</p>
+          <p class="timeline-desc">Developed and maintained SQL scripts, stored procedures, functions, and ETL processes. Collaborated with business analysts to translate requirements into technical solutions, and automated database processes. Performed testing and deployment, monitored production performance, researched new technologies, and documented technical processes to ensure efficient and reliable database solutions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="projects">
-    <p class="section-label reveal">02 / projects</p>
+    <p class="section-label reveal">03 / projects</p>
     <h2 class="section-title reveal">Things I've built</h2>
     <div class="projects-grid">
 
@@ -196,6 +223,23 @@
 
       <div class="project-card reveal">
         <div class="project-header">
+          <span class="project-name">Data Warehouse Project</span>
+          <span class="project-icon">🏗️</span>
+        </div>
+        <div class="project-meta">
+          <span class="project-tag">SQL Server</span>
+          <span class="project-tag">Apache Airflow</span>
+          <span class="project-tag">Docker</span>
+          <span class="project-tag">Apache Superset</span>
+          <span class="project-tag status">In Progress</span>
+        </div>
+        <p class="project-desc">A fully containerized Medallion Architecture data warehouse (Bronze → Silver → Gold), orchestrated with Airflow DAGs and visualized through Apache Superset, all running via Docker Compose.</p>
+        <div class="project-outcome">→ Building an end-to-end pipeline from raw ingestion to analytics-ready data marts.</div>
+        <a href="https://github.com/JulietM00/julietm00/tree/main/Data-Warehouse-Project" target="_blank" style="display: inline-block; margin-top: 1.25rem; font-size: 0.82rem; font-weight: 600; color: var(--accent); text-decoration: none; border: 1.5px solid var(--border); padding: 0.4rem 1rem; border-radius: 50px; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(180,120,70,0.18)'">🐙 View on GitHub →</a>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-header">
           <span class="project-name">Retail Database Design</span>
           <span class="project-icon">🗄️</span>
         </div>
@@ -212,7 +256,7 @@
   </section>
 
   <section id="education">
-    <p class="section-label reveal">03 / education</p>
+    <p class="section-label reveal">04 / education</p>
     <h2 class="section-title reveal">My background</h2>
     <div class="timeline reveal">
       <div class="timeline-item">
@@ -287,10 +331,10 @@
 
   <div id="contact">
     <div class="inner">
-      <p class="section-label reveal">04 / contact</p>
+      <p class="section-label reveal">05 / contact</p>
       <h2 class="section-title reveal">Let's talk</h2>
       <div class="contact-box reveal">
-        <p>I'm open to Junior SQL Developer and IT Support roles, collaborations, or just a good conversation about data and tech. My inbox is always open.</p>
+        <p>I'm open to Junior SQL Developer, Data Analyst, and Data Engineer roles, collaborations, or just a good conversation about data and tech. My inbox is always open.</p>
         <div class="contact-links">
           <a href="https://github.com/JulietM00" target="_blank" class="btn btn-outline">GitHub</a>
           <a href="https://www.linkedin.com/in/juliet-nomvula-mlambo" target="_blank" class="btn btn-outline">LinkedIn</a>
