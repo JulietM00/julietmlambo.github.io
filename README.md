@@ -2,7 +2,7 @@
 
 A clean, warm, and personal portfolio website built with pure HTML, CSS, and JavaScript. Designed to showcase my skills, projects, and background as a **Junior SQL & BI Developer**.
 
-🔗 **Live Site:** [julietm00.github.io]([https://julietm00.github.io](https://julietm00.github.io/julietmlambo.github.io/))
+🔗 **Live Site:** [julietm00.github.io]((https://julietm00.github.io/julietmlambo.github.io/))
 
 ---
 
